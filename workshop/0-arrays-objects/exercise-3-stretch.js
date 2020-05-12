@@ -23,6 +23,15 @@ let mostPopularFood = [
 // After all the foods have been logged, the program should end.
 //
 // HINT: You'll need to use `setInterval` and `clearInterval`.
-let position;
+let position = mostPopularFood.length;
 
-for (let i = mostPopularFood.length; i > 0; i--) {}
+const myFunc = () => {
+  if (position > 0) {
+    console.log(`#${position}: ${mostPopularFood[position - 1]}`);
+    position--;
+  } else {
+    clearInterval(intervalID);
+  }
+};
+
+let intervalID = setInterval(myFunc, 1000);
