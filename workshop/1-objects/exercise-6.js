@@ -30,7 +30,7 @@ let inputData = {
   girlfriendAge: 9,
   girlfriendStatus: "angry",
   girlfriendSuperpower1: "telepathy",
-  girlfriendSuperpower1: "multiverse portal sealing",
+  girlfriendSuperpower2: "multiverse portal sealing",
 };
 
 /*
@@ -88,7 +88,57 @@ For example, the main superpowers array should be:
 */
 
 function transformData(data) {
-  // Your code here
+  let obj = {};
+
+  obj.name = data.name;
+  obj.age = data.age;
+  obj.status = data.status;
+  obj.address = {};
+  obj.address.streetAddress = data.address1;
+  obj.address.city = data.addressCity;
+  obj.address.state = data.addressState;
+  obj.address.country = data.addressCountry;
+  obj.superpowers = [];
+
+  if (data.superpower1 !== null) {
+    obj.superpowers.push(data.superpower1);
+  }
+  if (data.superpower2 !== null) {
+    obj.superpowers.push(data.superpower2);
+  }
+
+  obj.relationships = [];
+  obj.relationships.push({});
+  obj.relationships[0].type = "mother";
+  obj.relationships[0].name = data.motherName;
+  obj.relationships[0].age = data.motherAge;
+  obj.relationships[0].status = data.motherStatus;
+  obj.relationships[0].superpowers = [];
+
+  if (data.motherSuperpower1 !== null) {
+    obj.relationships[0].superpowers.push(data.motherSuperpower1);
+  }
+  if (data.motherSuperpower2 !== null) {
+    obj.relationships[0].superpowers.push(data.motherSuperpower2);
+  }
+
+  obj.relationships.push({});
+
+  obj.relationships[1].type = "girlfriend";
+  obj.relationships[1].name = data.girlfriendName;
+  obj.relationships[1].age = data.girlfriendAge;
+  obj.relationships[1].status = data.girlfriendStatus;
+  obj.relationships[1].superpowers = [];
+
+  if (data.girlfriendSuperpower1 !== null) {
+    obj.relationships[1].superpowers.push(data.girlfriendSuperpower1);
+  }
+  if (data.girlfriendSuperpower2 !== null) {
+    obj.relationships[1].superpowers.push(data.girlfriendSuperpower2);
+  }
+
+  // console.log(obj);
+  return obj;
 }
 
 /*
