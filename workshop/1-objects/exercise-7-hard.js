@@ -126,14 +126,19 @@ order, and that's 100% OK).
 function groupPeopleByDessert(dessertObject) {
   let obj = {};
   let dessertArr = Object.values(dessertObject);
+  let peopleArr = Object.keys(dessertObject);
 
   dessertArr.forEach(function (dessert) {
     obj[dessert] = [];
-    let name = dessertObject[dessert];
-    console.log(name);
+
+    peopleArr.forEach(function (person) {
+      if (dessertObject[person] === dessert) {
+        obj[dessert].push(person);
+      }
+    });
   });
 
-  console.log(obj);
+  return obj;
 }
 
 console.log(
