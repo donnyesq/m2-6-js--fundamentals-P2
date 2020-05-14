@@ -8,38 +8,38 @@
 // Notice that there are duplicates (eg. both Riley and John like "ice-cream").
 
 const favoriteDessertsGroupA = {
-  scott: 'brownies',
-  fred: 'tiramisu',
-  lisa: 'chocolate cake',
-  riley: 'ice-cream',
-  sunny: 'cheese cake',
-  john: 'ice-cream',
-  beth: 'cheese cake',
-  summer: 'ice-cream',
-  morty: 'apple pie',
-  rick: 'brownies',
-  andrew: 'cheese cake',
-  jerry: 'rhubard pie',
-  'jean-luc': 'cheese cake',
-  tiffany: 'waffles',
-  melissa: 'profiteroles',
+  scott: "brownies",
+  fred: "tiramisu",
+  lisa: "chocolate cake",
+  riley: "ice-cream",
+  sunny: "cheese cake",
+  john: "ice-cream",
+  beth: "cheese cake",
+  summer: "ice-cream",
+  morty: "apple pie",
+  rick: "brownies",
+  andrew: "cheese cake",
+  jerry: "rhubard pie",
+  "jean-luc": "cheese cake",
+  tiffany: "waffles",
+  melissa: "profiteroles",
 };
 
 const favouriteDessertsGroupB = {
-  alice: 'pie',
-  betty: 'deep-fried mars bar',
-  colin: 'gummy bears',
-  damien: 'child tears',
-  ellicia: 'panda express',
-  fertrude: 'gummy bears'.
-  glinda: 'pie',
-  hethel: 'not applicable',
-  irsula: 'rum cake',
-  judas: 'revenge (served cold)',
-  khloe: 'pie',
-  lyndon: 'easter eggs',
-  minda: 'dessert',
-}
+  alice: "pie",
+  betty: "deep-fried mars bar",
+  colin: "gummy bears",
+  damien: "child tears",
+  ellicia: "panda express",
+  fertrude: "gummy bears",
+  glinda: "pie",
+  hethel: "not applicable",
+  irsula: "rum cake",
+  judas: "revenge (served cold)",
+  khloe: "pie",
+  lyndon: "easter eggs",
+  minda: "dessert",
+};
 
 // Exercise A
 // Write a function which takes one of these objects and puts them into an
@@ -54,14 +54,37 @@ const favouriteDessertsGroupB = {
 // - Second, put them in order
 
 function sortDessertsByPopularity(dessertObject) {
-  // Write code
+  let desertArr = Object.values(dessertObject);
+  let obj = {};
+
+  desertArr.forEach(function (dessert) {
+    obj[dessert] = 0;
+  });
+
+  desertArr.forEach(function (dessert) {
+    obj[dessert] = obj[dessert] + 1;
+  });
+
+  let finalArr = Object.keys(obj);
+
+  finalArr.sort(function (a, b) {
+    a = obj[a];
+    b = obj[b];
+
+    if (a > b) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
+
+  return finalArr;
 }
 
 console.log(
-  'Popular desserts in Group B:',
+  "Popular desserts in Group B:",
   sortDessertsByPopularity(favouriteDessertsGroupB)
 );
-
 
 /*
 Exercise B
@@ -95,11 +118,9 @@ Expected output for Group B:
 order, and that's 100% OK).
 */
 
-function groupPeopleByDessert(dessertObject) {
-
-}
+function groupPeopleByDessert(dessertObject) {}
 
 console.log(
-  'People grouped by dessert:',
+  "People grouped by dessert:",
   groupPeopleByDessert(favouriteDessertsGroupB)
 );
