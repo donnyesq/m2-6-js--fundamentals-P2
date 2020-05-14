@@ -1,4 +1,4 @@
-// Exercise 6
+// Exercise 7
 // -------------------
 
 // Below are two objects of the same "format".
@@ -86,6 +86,11 @@ console.log(
   sortDessertsByPopularity(favouriteDessertsGroupB)
 );
 
+console.log(
+  "Popular desserts in Group A:",
+  sortDessertsByPopularity(favoriteDessertsGroupA)
+);
+
 /*
 Exercise B
 Create a new object with the following form:
@@ -118,9 +123,25 @@ Expected output for Group B:
 order, and that's 100% OK).
 */
 
-function groupPeopleByDessert(dessertObject) {}
+function groupPeopleByDessert(dessertObject) {
+  let obj = {};
+  let dessertArr = Object.values(dessertObject);
+
+  dessertArr.forEach(function (dessert) {
+    obj[dessert] = [];
+    let name = dessertObject[dessert];
+    console.log(name);
+  });
+
+  console.log(obj);
+}
 
 console.log(
   "People grouped by dessert:",
   groupPeopleByDessert(favouriteDessertsGroupB)
+);
+
+console.log(
+  "People grouped by dessert:",
+  groupPeopleByDessert(favoriteDessertsGroupA)
 );
